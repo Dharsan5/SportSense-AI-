@@ -1,0 +1,130 @@
+{
+  "analysisTimestamp": "2025-08-10T14:30:00.000Z",
+  "overallPostureScore": 72,
+  "detectedFaults": [
+    {
+      "id": "fault_001",
+      "type": "knee_valgus",
+      "severity": "moderate",
+      "confidence": 0.87,
+      "bodyPart": "left_knee",
+      "description": "Left knee caving inward during squat movement",
+      "correction": "Focus on pushing knees outward, strengthen glutes and hip abductors",
+      "timestamp": "2025-08-10T14:29:45.000Z",
+      "coordinates": {
+        "x": 320,
+        "y": 180,
+        "z": 15
+      }
+    },
+    {
+      "id": "fault_002",
+      "type": "forward_head_posture",
+      "severity": "mild",
+      "confidence": 0.73,
+      "bodyPart": "neck",
+      "description": "Head positioned too far forward relative to shoulders",
+      "correction": "Pull chin back, strengthen deep neck flexors, stretch chest muscles",
+      "timestamp": "2025-08-10T14:29:50.000Z",
+      "coordinates": {
+        "x": 240,
+        "y": 85,
+        "z": 8
+      }
+    },
+    {
+      "id": "fault_003",
+      "type": "ankle_mobility",
+      "severity": "severe",
+      "confidence": 0.92,
+      "bodyPart": "right_ankle",
+      "description": "Limited ankle dorsiflexion causing heel lift during squat",
+      "correction": "Perform calf stretches, ankle mobility drills, and consider heel elevation",
+      "timestamp": "2025-08-10T14:29:55.000Z",
+      "coordinates": {
+        "x": 380,
+        "y": 420,
+        "z": 2
+      }
+    },
+    {
+      "id": "fault_004",
+      "type": "shoulder_imbalance",
+      "severity": "mild",
+      "confidence": 0.65,
+      "bodyPart": "shoulders",
+      "description": "Right shoulder slightly elevated compared to left",
+      "correction": "Focus on shoulder blade awareness, strengthen lower trapezius",
+      "timestamp": "2025-08-10T14:30:00.000Z",
+      "coordinates": {
+        "x": 280,
+        "y": 120,
+        "z": 12
+      }
+    }
+  ],
+  "keyPoints": {
+    "head": { "x": 240, "y": 85, "confidence": 0.95 },
+    "neck": { "x": 240, "y": 110, "confidence": 0.93 },
+    "left_shoulder": { "x": 200, "y": 120, "confidence": 0.91 },
+    "right_shoulder": { "x": 280, "y": 115, "confidence": 0.89 },
+    "left_elbow": { "x": 180, "y": 180, "confidence": 0.88 },
+    "right_elbow": { "x": 300, "y": 185, "confidence": 0.90 },
+    "left_wrist": { "x": 160, "y": 240, "confidence": 0.85 },
+    "right_wrist": { "x": 320, "y": 245, "confidence": 0.87 },
+    "left_hip": { "x": 220, "y": 260, "confidence": 0.92 },
+    "right_hip": { "x": 260, "y": 260, "confidence": 0.94 },
+    "left_knee": { "x": 210, "y": 340, "confidence": 0.89 },
+    "right_knee": { "x": 270, "y": 345, "confidence": 0.91 },
+    "left_ankle": { "x": 200, "y": 420, "confidence": 0.86 },
+    "right_ankle": { "x": 280, "y": 425, "confidence": 0.88 }
+  },
+  "movementAnalysis": {
+    "exercise": "bodyweight_squat",
+    "phase": "descent",
+    "repetition": 3,
+    "duration": 2.5,
+    "rangeOfMotion": {
+      "hip_flexion": 85,
+      "knee_flexion": 90,
+      "ankle_dorsiflexion": 15
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "category": "mobility",
+      "action": "Improve ankle dorsiflexion through targeted stretching and mobility work"
+    },
+    {
+      "priority": "medium",
+      "category": "strength",
+      "action": "Strengthen glutes and hip abductors to prevent knee valgus"
+    },
+    {
+      "priority": "medium",
+      "category": "posture",
+      "action": "Work on cervical spine alignment and deep neck flexor strength"
+    },
+    {
+      "priority": "low",
+      "category": "awareness",
+      "action": "Practice shoulder blade positioning and awareness exercises"
+    }
+  ],
+  "progressTracking": {
+    "previousSession": {
+      "date": "2025-08-08T14:30:00.000Z",
+      "score": 68,
+      "improvedFaults": ["shoulder_imbalance"],
+      "newFaults": ["ankle_mobility"]
+    },
+    "improvements": [
+      {
+        "fault": "hip_shift",
+        "status": "resolved",
+        "dateResolved": "2025-08-07T14:30:00.000Z"
+      }
+    ]
+  }
+}
