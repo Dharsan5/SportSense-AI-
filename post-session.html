@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session Summary - SportSense AI</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- custom css link -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/post-session.css">
+
+  <!-- google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body id="top">
+
+  <!-- HEADER -->
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="index.html" class="logo">
+        <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+        <span class="span">SportSense AI</span>
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+        </button>
+
+        <ul class="navbar-list">
+          <li>
+            <a href="index.html" class="navbar-link" data-nav-link>Home</a>
+          </li>
+          <li>
+            <a href="dashboard.html" class="navbar-link" data-nav-link>Dashboard</a>
+          </li>
+          <li>
+            <a href="live-session.html" class="navbar-link" data-nav-link>Live Session</a>
+          </li>
+          <li>
+            <a href="#" class="navbar-link" data-nav-link>Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="dashboard.html" class="btn btn-secondary">Dashboard</a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <article>
+
+      <!-- POST SESSION SECTION -->
+      <section class="section post-session" aria-label="session-summary">
+        <div class="container">
+
+          <div class="session-header">
+            <h1 class="h1 section-title">Session Complete! 🎉</h1>
+            <p class="session-date" id="session-date"></p>
+          </div>
+
+          <!-- Form Consistency Score -->
+          <div class="form-score-card">
+            <h2 class="h2">Form Consistency Score</h2>
+            <div class="score-circle">
+              <svg width="150" height="150" viewBox="0 0 150 150">
+                <circle cx="75" cy="75" r="65" fill="none" stroke="rgba(255,154,1,0.2)" stroke-width="6" />
+                <circle cx="75" cy="75" r="65" fill="none" stroke="url(#gradient2)" stroke-width="6" 
+                        stroke-dasharray="355 408" stroke-linecap="round" transform="rotate(-90 75 75)" />
+                <defs>
+                  <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff9a01;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#ff8a50;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="score-text">
+                <span class="score">87</span>
+                <span class="score-label">Good</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Session Stats -->
+          <div class="session-stats">
+            <div class="stat-item">
+              <span class="stat-value">23:45</span>
+              <span class="stat-label">Duration</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">4</span>
+              <span class="stat-label">Sets</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">40</span>
+              <span class="stat-label">Total Reps</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">135lbs</span>
+              <span class="stat-label">Avg Weight</span>
+            </div>
+          </div>
+
+          <!-- Key Improvements -->
+          <div class="improvements-section">
+            <h3 class="h3">Key Improvement Notes</h3>
+            <div class="improvements-list">
+              <div class="improvement-item">
+                <span class="improvement-icon">💡</span>
+                <span class="improvement-text">Maintain consistent depth throughout all reps</span>
+              </div>
+              <div class="improvement-item">
+                <span class="improvement-icon">💡</span>
+                <span class="improvement-text">Focus on controlled descent speed</span>
+              </div>
+              <div class="improvement-item">
+                <span class="improvement-icon">💡</span>
+                <span class="improvement-text">Keep knees tracking over toes</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Session Timeline -->
+          <div class="timeline-section">
+            <h3 class="h3">Session Timeline</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-marker">
+                  <span class="set-number">Set 1</span>
+                </div>
+                <div class="timeline-content">
+                  <div class="set-stats">
+                    <span>10 reps × 135lbs</span>
+                    <span class="form-badge excellent">Form: 92%</span>
+                  </div>
+                  <p class="set-notes">Excellent form, good depth</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-marker">
+                  <span class="set-number">Set 2</span>
+                </div>
+                <div class="timeline-content">
+                  <div class="set-stats">
+                    <span>10 reps × 135lbs</span>
+                    <span class="form-badge good">Form: 89%</span>
+                  </div>
+                  <p class="set-notes">Slight forward lean on rep 8-9</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-marker">
+                  <span class="set-number">Set 3</span>
+                </div>
+                <div class="timeline-content">
+                  <div class="set-stats">
+                    <span>10 reps × 135lbs</span>
+                    <span class="form-badge good">Form: 85%</span>
+                  </div>
+                  <p class="set-notes">Depth inconsistent, fatigue showing</p>
+                </div>
+              </div>
+
+              <div class="timeline-item">
+                <div class="timeline-marker">
+                  <span class="set-number">Set 4</span>
+                </div>
+                <div class="timeline-content">
+                  <div class="set-stats">
+                    <span>10 reps × 135lbs</span>
+                    <span class="form-badge needs-work">Form: 82%</span>
+                  </div>
+                  <p class="set-notes">Form breakdown, consider reducing weight</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <a href="dashboard.html" class="btn btn-primary">
+              Back to Dashboard
+            </a>
+            <button class="btn btn-secondary" onclick="shareSession()">
+              Share Session
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+            <span class="span">SportSense AI</span>
+          </a>
+          <p class="footer-brand-text">
+            AI-powered fitness coaching for perfect form and maximum results.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">
+          &copy; 2025 SportSense AI. All Rights Reserved By Dharsan5
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <a href="#top" aria-label="back to top" data-back-top-btn class="back-top-btn">
+    <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- custom js link -->
+  <script src="./assets/js/script.js" defer></script>
+  <script src="./assets/js/post-session.js" defer></script>
+
+  <!-- ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
