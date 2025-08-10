@@ -18,9 +18,6 @@
 
 <br />
 
-### Demo Screenshots
-
-![SportSense AI Desktop Demo](./readme-images/desktop.png "Desktop Demo")
 
 ## Features
 
