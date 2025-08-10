@@ -242,8 +242,12 @@ SportSense-AI/
 If you want to contact me, you can reach me at:
 - **GitHub**: [Dharsan5](https://github.com/Dharsan5)
 - **Email**: dharsansp.23cse@kongu.edu
+<<<<<<< HEAD
 - **Institution**: KEC, Erode
 - **LinkedIn**: [Connect with me](https://linkedin.com/in/dharsan5)
+=======
+- **Institution**: KEC , Erode
+>>>>>>> 9fc7d10e11b39e35dcf2fa6f077848bb64986b99
 
 ### License
 
@@ -251,6 +255,7 @@ This project is **free to use** and does not contain any license. Feel free to u
 
 ### Acknowledgments
 
+<<<<<<< HEAD
 - 🏆 **MIT Hackathon Project** - Developed as part of prestigious hackathon
 - 🏫 **KEC, Erode** - Academic institution support
 - 🚀 **Supabase** - Backend infrastructure and database
@@ -262,10 +267,15 @@ This project is **free to use** and does not contain any license. Feel free to u
 - **v2.0** - Complete profile system with database integration
 - **v1.5** - Authentication system and user management
 - **v1.0** - Initial release with AI-powered fitness tracking
+=======
+- Developed as part of MIT Hackathon project
+- KEC , Erode
+>>>>>>> 9fc7d10e11b39e35dcf2fa6f077848bb64986b99
 
 ---
 
 <div align="center">
+<<<<<<< HEAD
   <h3>🔥 SportSense AI - Where Technology Meets Fitness 🔥</h3>
   <p><strong>Made by Dharshan</strong></p>
   <p>
@@ -273,4 +283,7 @@ This project is **free to use** and does not contain any license. Feel free to u
     <a href="https://github.com/Dharsan5/SportSense-AI-/issues">🐛 Report Bug</a> • 
     <a href="https://github.com/Dharsan5/SportSense-AI-/pulls">🚀 Request Feature</a>
   </p>
+=======
+  <strong>Made  by Dharshan</strong>
+>>>>>>> 9fc7d10e11b39e35dcf2fa6f077848bb64986b99
 </div>
