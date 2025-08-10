@@ -1,18 +1,10 @@
-<div align="center">
-  
-  ![GitHub repo size](https://img.shields.io/github/repo-size/Dharsan5/SportSense-AI-)
-  ![GitHub stars](https://img.shields.io/github/stars/Dharsan5/SportSense-AI-?style=social)
-  ![GitHub forks](https://img.shields.io/github/forks/Dharsan5/SportSense-AI-?style=social)
-[![GitHub Follow](https://img.shields.io/github/followers/Dharsan5?style=social)](https://github.com/Dharsan5)
 
-  <br />
   <br />
 
   <h2 align="center">SportSense AI - AI-Powered Fitness Platform</h2>
 
   SportSense AI is a revolutionary fitness platform that combines artificial intelligence with workout training, <br />Built using HTML, CSS, and JavaScript with real-time form analysis and personalized coaching.
 
-  <a href="#"><strong>➥ Live Demo</strong></a>
 
 </div>
 
@@ -21,12 +13,12 @@
 
 ## Features
 
-🤖 **AI-Powered Form Analysis** - Real-time movement tracking and form correction
-📊 **Smart Dashboard** - Comprehensive fitness metrics and progress tracking
-🎯 **Live Session Monitoring** - Interactive workout sessions with instant feedback
-📈 **Post-Session Analytics** - Detailed performance analysis and improvement suggestions
-💡 **Personalized Coaching** - AI-driven recommendations based on your performance
-📱 **Responsive Design** - Optimized for all devices and screen sizes
+ **AI-Powered Form Analysis** - Real-time movement tracking and form correction
+ **Smart Dashboard** - Comprehensive fitness metrics and progress tracking
+ **Live Session Monitoring** - Interactive workout sessions with instant feedback
+ **Post-Session Analytics** - Detailed performance analysis and improvement suggestions
+ **Personalized Coaching** - AI-driven recommendations based on your performance
+ **Responsive Design** - Optimized for all devices and screen sizes
 
 ## Technology Stack
 
@@ -84,8 +76,8 @@ SportSense-AI/
 
 If you want to contact me, you can reach me at:
 - **GitHub**: [Dharsan5](https://github.com/Dharsan5)
-- **Email**: dharshan@kec.edu.in
-- **Institution**: KEC College Perunduri
+- **Email**: dharsansp.23cse@kongu.edu
+- **Institution**: KEC , Erode
 
 ### License
 
@@ -94,11 +86,10 @@ This project is **free to use** and does not contain any license. Feel free to u
 ### Acknowledgments
 
 - Developed as part of MIT Hackathon project
-- KEC College Perunduri
-- Special thanks to the AI and fitness technology communities
+- KEC , Erode
 
 ---
 
 <div align="center">
-  <strong>Made with ❤️ by Dharshan</strong>
+  <strong>Made  by Dharshan</strong>
 </div>
