@@ -211,7 +211,9 @@ let currentExercise = 'squat';
 let isVoiceEnabled = true;
 let isSpeaking = false;
 let voiceQueue = [];
-let elevenLabsApiKey = 'sk-6b8d9f7a2e5c1d4f8e9a2b6c3e7f1a9d4c8b2e6f'; // Hardcoded API key
+// Get ElevenLabs API key from environment variables (Vercel) or fallback for local development
+let elevenLabsApiKey = window.getEnvVar ? window.getEnvVar('VITE_ELEVENLABS_API_KEY', 'sk-6b8d9f7a2e5c1d4f8e9a2b6c3e7f1a9d4c8b2e6f') : 
+                      'sk-6b8d9f7a2e5c1d4f8e9a2b6c3e7f1a9d4c8b2e6f'; // Fallback for local development
 let selectedVoiceId = 'pNInz6obpgDQGcFmaJgB'; // Default voice ID - consistent coaching voice
 let voiceSettings = {
   stability: 0.71,

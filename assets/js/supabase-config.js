@@ -7,9 +7,10 @@
 
 // Supabase configuration - FRONTEND ONLY
 const SUPABASE_CONFIG = {
-  url: 'https://fbjmqrxlwgqojqardgqo.supabase.co', // Your Supabase project URL
-  anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiam1xcnhsd2dxb2pxYXJkZ3FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MTUyNjQsImV4cCI6MjA3MDM5MTI2NH0.uE0MtSSN5v1KmER0xSY-nRNPrj1u5RfFYW3pfIdzzBI' // Your Supabase anon key (safe for frontend)
- 
+  url: window.getEnvVar ? window.getEnvVar('VITE_SUPABASE_URL', 'https://fbjmqrxlwgqojqardgqo.supabase.co') : 
+       'https://fbjmqrxlwgqojqardgqo.supabase.co', // Your Supabase project URL
+  anonKey: window.getEnvVar ? window.getEnvVar('VITE_SUPABASE_ANON_KEY', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiam1xcnhsd2dxb2pxYXJkZ3FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MTUyNjQsImV4cCI6MjA3MDM5MTI2NH0.uE0MtSSN5v1KmER0xSY-nRNPrj1u5RfFYW3pfIdzzBI') :
+           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiam1xcnhsd2dxb2pxYXJkZ3FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MTUyNjQsImV4cCI6MjA3MDM5MTI2NH0.uE0MtSSN5v1KmER0xSY-nRNPrj1u5RfFYW3pfIdzzBI' // Your Supabase anon key (safe for frontend)
 };
 
 // Initialize Supabase client

@@ -243,7 +243,10 @@ body {
   color: var(--coquelicot);
 }
 
-.btn-secondary:is(:hover, :focus) { background-color: var(--rich-black-fogra-29-1); }
+.btn-secondary:is(:hover, :focus) { 
+  background-color: var(--coquelicot); 
+  color: var(--white);
+}
 
 .w-100 { width: 100%; }
 

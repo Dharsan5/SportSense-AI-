@@ -225,29 +225,82 @@ SportSense-AI/
 4. Push to branch: `git push origin feature-name`
 5. Submit a pull request
 
+## 🚀 Vercel Deployment Guide
+
+### **Step 1: Prepare Repository**
+```bash
+# Ensure all changes are committed and pushed to GitHub
+git add .
+git commit -m "Ready for Vercel deployment"
+git push origin main  # or your main branch
+```
+
+### **Step 2: Sign Up for Vercel**
+1. Go to [vercel.com](https://vercel.com)
+2. Sign up with your GitHub account
+3. Grant Vercel access to your repositories
+
+### **Step 3: Import Project**
+1. Click **"New Project"** in Vercel dashboard
+2. Select **"Import Git Repository"**
+3. Choose your **SportSense-AI** repository
+4. Click **"Import"**
+
+### **Step 4: Configure Framework Settings**
+When Vercel asks for framework preset:
+- **Framework Preset**: Select `Other` or `Static Site`
+- **Root Directory**: `./` (leave as default)
+- **Build Command**: Leave empty
+- **Output Directory**: `./` (leave as default)
+- **Install Command**: Leave empty
+
+### **Step 5: Set Environment Variables**
+In the Vercel project settings, add these environment variables:
+
+```
+VITE_SUPABASE_URL = https://fbjmqrxlwgqojqardgqo.supabase.co
+VITE_SUPABASE_ANON_KEY = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiam1xcnhsd2dxb2pxYXJkZ3FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MTUyNjQsImV4cCI6MjA3MDM5MTI2NH0.uE0MtSSN5v1KmER0xSY-nRNPrj1u5RfFYW3pfIdzzBI
+```
+
+**How to add environment variables in Vercel:**
+1. Go to your project dashboard in Vercel
+2. Click **Settings** tab
+3. Click **Environment Variables** on the left
+4. Add each variable with **Name** and **Value**
+5. Select **Production**, **Preview**, and **Development**
+6. Click **Save**
+
+### **Step 6: Deploy**
+1. Click **"Deploy"** button
+2. Wait for deployment to complete (usually 1-2 minutes)
+3. Your app will be live at: `https://your-project-name.vercel.app`
+
+### **Step 7: Custom Domain (Optional)**
+1. Go to project **Settings** → **Domains**
+2. Add your custom domain
+3. Configure DNS records as instructed by Vercel
+
+### **Project Information for Vercel:**
+- **Framework**: Vanilla JavaScript (No framework)
+- **Build Process**: None required
+- **Package Manager**: None (no package.json)
+- **Dependencies**: External Supabase API only
+- **Type**: Static Site with Dynamic Database Integration
+
 ## Deployment
 
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Set up environment variables for Supabase
-3. Deploy with automatic builds on git push
-
-### Other Platforms
-- **Netlify**: Drag and drop deployment
-- **GitHub Pages**: Static hosting for frontend
-- **Heroku**: Full-stack deployment option
+### Alternative Platforms
+- **Netlify**: Drag and drop deployment for static sites
+- **GitHub Pages**: Free static hosting (frontend only)
+- **Firebase Hosting**: Google's static hosting solution
 
 ### Contact
 
 If you want to contact me, you can reach me at:
 - **GitHub**: [Dharsan5](https://github.com/Dharsan5)
 - **Email**: dharsansp.23cse@kongu.edu
-<<<<<<< HEAD
 - **Institution**: KEC, Erode
 - **LinkedIn**: [Connect with me](https://linkedin.com/in/dharsan5)
-=======
-- **Institution**: KEC , Erode
->>>>>>> 9fc7d10e11b39e35dcf2fa6f077848bb64986b99
 
 ### License
 
@@ -255,7 +308,6 @@ This project is **free to use** and does not contain any license. Feel free to u
 
 ### Acknowledgments
 
-<<<<<<< HEAD
 - 🏆 **MIT Hackathon Project** - Developed as part of prestigious hackathon
 - 🏫 **KEC, Erode** - Academic institution support
 - 🚀 **Supabase** - Backend infrastructure and database
@@ -267,23 +319,15 @@ This project is **free to use** and does not contain any license. Feel free to u
 - **v2.0** - Complete profile system with database integration
 - **v1.5** - Authentication system and user management
 - **v1.0** - Initial release with AI-powered fitness tracking
-=======
-- Developed as part of MIT Hackathon project
-- KEC , Erode
->>>>>>> 9fc7d10e11b39e35dcf2fa6f077848bb64986b99
 
 ---
 
 <div align="center">
-<<<<<<< HEAD
   <h3>🔥 SportSense AI - Where Technology Meets Fitness 🔥</h3>
-  <p><strong>Made by Dharshan</strong></p>
+  <p><strong>Made with ❤️ by Dharshan</strong></p>
   <p>
     <a href="https://github.com/Dharsan5/SportSense-AI-">⭐ Star this repo</a> • 
     <a href="https://github.com/Dharsan5/SportSense-AI-/issues">🐛 Report Bug</a> • 
     <a href="https://github.com/Dharsan5/SportSense-AI-/pulls">🚀 Request Feature</a>
   </p>
-=======
-  <strong>Made  by Dharshan</strong>
->>>>>>> 9fc7d10e11b39e35dcf2fa6f077848bb64986b99
 </div>

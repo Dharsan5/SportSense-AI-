@@ -7,6 +7,20 @@
   background: var(--white) !important;
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 154, 1, 0.1);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  height: 80px !important;
+  min-height: 80px !important;
+  padding: 12px 0 !important;
+}
+
+.header .container {
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .header .logo .span,
@@ -15,12 +29,18 @@
   color: var(--rich-black-fogra-29-1) !important;
 }
 
+.header .btn:is(:hover, :focus) {
+  background-color: var(--coquelicot) !important;
+  color: var(--white) !important;
+}
+
 .header .navbar-link.active {
   color: var(--coquelicot) !important;
 }
 
 .post-session {
   padding: 2rem 0;
+  padding-top: 6rem !important;
   background: var(--white);
   min-height: 100vh;
   color: var(--rich-black-fogra-29-1);

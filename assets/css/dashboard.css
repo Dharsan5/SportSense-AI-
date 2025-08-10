@@ -15,6 +15,11 @@
   color: var(--rich-black-fogra-29-1) !important;
 }
 
+.header .btn:is(:hover, :focus) {
+  background-color: var(--coquelicot) !important;
+  color: var(--white) !important;
+}
+
 .header .navbar-link.active {
   color: var(--coquelicot) !important;
 }
