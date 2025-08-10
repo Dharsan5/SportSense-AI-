@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Test - SportSense AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: white;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            margin: 20px auto;
+            background: #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        #test-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .placeholder {
+            padding: 100px 20px;
+            background: #222;
+            color: #ccc;
+        }
+        
+        .status {
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 4px;
+            background: #333;
+        }
+        
+        .success { background: #0a5c2b; }
+        .error { background: #5c0a0a; }
+        .warning { background: #5c4a0a; }
+        
+        button {
+            background: #ff9a01;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        
+        button:hover {
+            background: #e6880a;
+        }
+        
+        .logs {
+            text-align: left;
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎥 Camera Test - SportSense AI</h1>
+        <p>This page tests basic camera functionality</p>
+        
+        <div class="status" id="status">Ready to test camera</div>
+        
+        <button onclick="testCamera()">Start Camera Test</button>
+        <button onclick="stopCamera()">Stop Camera</button>
+        
+        <div class="video-container">
+            <video id="test-video" autoplay muted playsinline style="display: none;"></video>
+            <div class="placeholder" id="placeholder">
+                📹 Camera will appear here<br>
+                <small>Click "Start Camera Test" button above</small>
+            </div>
+        </div>
+        
+        <div class="logs" id="logs"></div>
+    </div>
+
+    <script>
+        const video = document.getElementById('test-video');
+        const placeholder = document.getElementById('placeholder');
+        const status = document.getElementById('status');
+        const logs = document.getElementById('logs');
+        let currentStream = null;
+        
+        function log(message, type = 'info') {
+            console.log(message);
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.style.color = type === 'error' ? '#ff6b6b' : type === 'success' ? '#51cf66' : '#fff';
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            logs.appendChild(logEntry);
+            logs.scrollTop = logs.scrollHeight;
+        }
+        
+        function updateStatus(message, type = 'info') {
+            status.textContent = message;
+            status.className = `status ${type}`;
+        }
+        
+        async function testCamera() {
+            log('=== STARTING CAMERA TEST ===');
+            
+            try {
+                // Check if getUserMedia is supported
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    throw new Error('Camera access not supported in this browser');
+                }
+                
+                log('✅ getUserMedia is supported');
+                updateStatus('Requesting camera access...', 'warning');
+                
+                // Request camera access
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        width: { ideal: 640 },
+                        height: { ideal: 480 }
+                    },
+                    audio: false
+                });
+                
+                log('✅ Camera stream obtained');
+                log(`Stream has ${stream.getTracks().length} tracks`);
+                
+                currentStream = stream;
+                video.srcObject = stream;
+                
+                // Wait for video to load
+                video.addEventListener('loadedmetadata', () => {
+                    log(`✅ Video loaded: ${video.videoWidth}x${video.videoHeight}`);
+                    
+                    // Show video, hide placeholder
+                    video.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    
+                    updateStatus('✅ Camera working successfully!', 'success');
+                    log('✅ Camera test completed successfully');
+                });
+                
+                video.addEventListener('error', (e) => {
+                    log(`❌ Video error: ${e.message}`, 'error');
+                });
+                
+                // Try to play
+                await video.play();
+                log('✅ Video playing');
+                
+            } catch (error) {
+                log(`❌ Camera test failed: ${error.message}`, 'error');
+                updateStatus(`❌ Camera failed: ${error.message}`, 'error');
+                
+                // Show placeholder on error
+                video.style.display = 'none';
+                placeholder.style.display = 'block';
+                placeholder.innerHTML = `❌ Camera Error<br><small>${error.message}</small>`;
+            }
+        }
+        
+        function stopCamera() {
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+                currentStream = null;
+                log('Camera stopped');
+            }
+            
+            video.style.display = 'none';
+            placeholder.style.display = 'block';
+            placeholder.innerHTML = '📹 Camera stopped<br><small>Click "Start Camera Test" to restart</small>';
+            updateStatus('Camera stopped');
+        }
+        
+        // Auto-start test
+        log('Page loaded, ready for camera test');
+    </script>
+</body>
+</html>

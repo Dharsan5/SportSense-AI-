@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>SportSense AI - Your AI-Powered Fitness Companion</title>
+  <meta name="title" content="SportSense AI - Your AI-Powered Fitness Companion">
+  <meta name="description" content="Revolutionary AI-powered fitness platform with real-time pose detection and personalized coaching.">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap" rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png">
+  <link rel="preload" as="image" href="./assets/images/hero-circle-one.png">
+  <link rel="preload" as="image" href="./assets/images/hero-circle-two.png">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="welcome.html" class="logo">
+        <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+        <span class="span">SportSense AI</span>
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+        </button>
+
+        <ul class="navbar-list">
+          <li>
+            <a href="#home" class="navbar-link active" data-nav-link>Welcome</a>
+          </li>
+          <li>
+            <a href="#about" class="navbar-link" data-nav-link>About</a>
+          </li>
+          <li>
+            <a href="login.html" class="navbar-link" data-nav-link>Login</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="signup.html" class="btn btn-secondary">Get Started</a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- 
+    - #MAIN
+  -->
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero bg-dark has-after has-bg-image" id="home" aria-label="hero"
+        style="background-image: url('./assets/images/hero-bg.png')">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <p class="hero-subtitle">
+              <strong class="strong">Welcome to</strong> SportSense AI
+            </p>
+
+            <h1 class="h1 hero-title">Your AI-Powered Fitness Revolution</h1>
+
+            <p class="section-text">
+              Experience the future of fitness with cutting-edge AI technology. Real-time pose detection, intelligent form correction, and personalized coaching - all in one revolutionary platform.
+            </p>
+
+            <a href="signup.html" class="btn btn-primary">Start Your Journey</a>
+
+          </div>
+
+          <div class="hero-banner">
+            <img src="./assets/images/hero-banner.png" width="660" height="753" alt="SportSense AI hero banner" class="w-100">
+            <img src="./assets/images/hero-circle-one.png" width="666" height="666" aria-hidden="true" alt="" class="circle circle-1">
+            <img src="./assets/images/hero-circle-two.png" width="666" height="666" aria-hidden="true" alt="" class="circle circle-2">
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="section about" id="about" aria-label="about">
+        <div class="container">
+
+          <div class="about-banner has-after">
+            <img src="./assets/images/about-banner.png" width="660" height="648" loading="lazy" alt="about banner"
+              class="w-100">
+            <img src="./assets/images/about-circle-one.png" width="660" height="534" loading="lazy" aria-hidden="true"
+              alt="" class="circle circle-1">
+            <img src="./assets/images/about-circle-two.png" width="660" height="534" loading="lazy" aria-hidden="true"
+              alt="" class="circle circle-2">
+            <img src="./assets/images/fitness.png" width="650" height="154" loading="lazy" alt="fitness"
+              class="abs-img">
+          </div>
+
+          <div class="about-content">
+
+            <p class="section-subtitle">About SportSense AI</p>
+
+            <h2 class="h2 section-title">AI-Powered Fitness Technology</h2>
+
+            <p class="section-text">
+              SportSense AI represents a breakthrough in fitness technology, combining advanced computer vision with machine learning to provide real-time workout analysis and personalized coaching.
+            </p>
+
+            <div class="about-list">
+
+              <div class="about-item">
+                <ion-icon name="checkmark-circle" aria-hidden="true"></ion-icon>
+                <span class="span">Real-time Pose Detection</span>
+              </div>
+
+              <div class="about-item">
+                <ion-icon name="checkmark-circle" aria-hidden="true"></ion-icon>
+                <span class="span">AI Form Correction</span>
+              </div>
+
+              <div class="about-item">
+                <ion-icon name="checkmark-circle" aria-hidden="true"></ion-icon>
+                <span class="span">Personalized Coaching</span>
+              </div>
+
+            </div>
+
+            <a href="signup.html" class="btn btn-primary">Join SportSense AI</a>
+
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="section footer-top bg-dark has-bg-image" style="background-image: url('./assets/images/footer-bg.png')">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+            <span class="span">SportSense AI</span>
+          </a>
+
+          <p class="footer-brand-text">
+            Revolutionizing fitness through artificial intelligence and advanced pose detection technology.
+          </p>
+
+          <div class="wrapper">
+
+            <img src="./assets/images/footer-clock.png" width="34" height="34" loading="lazy"
+              alt="Clock">
+
+            <ul class="footer-brand-list">
+
+              <li>
+                <p class="footer-brand-title">Monday - Friday</p>
+                <p>7:00Am - 10:00Pm</p>
+              </li>
+
+              <li>
+                <p class="footer-brand-title">Saturday - Sunday</p>
+                <p>7:00Am - 2:00Pm</p>
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title has-before">Quick Links</p>
+          </li>
+
+          <li>
+            <a href="#home" class="footer-link">Welcome</a>
+          </li>
+
+          <li>
+            <a href="#about" class="footer-link">About Us</a>
+          </li>
+
+          <li>
+            <a href="login.html" class="footer-link">Login</a>
+          </li>
+
+          <li>
+            <a href="signup.html" class="footer-link">Sign Up</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title has-before">Contact Info</p>
+          </li>
+
+          <li class="footer-list-item">
+            <ion-icon name="location" aria-hidden="true"></ion-icon>
+            <address class="address footer-link">
+              AI Innovation Center, Tech District
+            </address>
+          </li>
+
+          <li class="footer-list-item">
+            <ion-icon name="call" aria-hidden="true"></ion-icon>
+            <a href="tel:+7894631546876" class="footer-link">+789-463-154-6876</a>
+          </li>
+
+          <li class="footer-list-item">
+            <ion-icon name="mail" aria-hidden="true"></ion-icon>
+            <a href="mailto:info@sportsenseai.com" class="footer-link">info@sportsenseai.com</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright">
+          &copy; 2025 SportSense AI. All Rights Reserved By <a href="#" class="copyright-link">dharshan.</a>
+        </p>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" aria-label="back to top" data-back-top-btn class="back-top-btn">
+    <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

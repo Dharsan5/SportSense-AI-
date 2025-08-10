@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - SportSense AI</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- custom css link -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/auth.css">
+
+  <!-- google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body id="top">
+
+  <!-- HEADER -->
+  <header class="header" data-header>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+        <span class="span">SportSense AI</span>
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+        </button>
+
+        <ul class="navbar-list">
+          <li>
+            <a href="welcome.html" class="navbar-link" data-nav-link>Home</a>
+          </li>
+          <li>
+            <a href="login.html" class="navbar-link" data-nav-link>Login</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="login.html" class="btn btn-secondary">Login</a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <article>
+      <!-- SIGNUP SECTION -->
+      <section class="section auth-section has-bg-image" 
+        style="background-image: url('./assets/images/hero-bg.png')">
+        <div class="container">
+          
+          <div class="auth-content">
+            <!-- Left side - Join us -->
+            <div class="auth-welcome">
+              <h1 class="h1 auth-title">Join SportSense AI</h1>
+              <p class="auth-subtitle">
+                Start your AI-powered fitness journey today
+              </p>
+              
+              <div class="feature-highlights">
+                <div class="feature-item">
+                  <ion-icon name="fitness" class="feature-icon"></ion-icon>
+                  <span>Personalized AI coaching</span>
+                </div>
+                <div class="feature-item">
+                  <ion-icon name="analytics" class="feature-icon"></ion-icon>
+                  <span>Real-time form analysis</span>
+                </div>
+                <div class="feature-item">
+                  <ion-icon name="trophy" class="feature-icon"></ion-icon>
+                  <span>Track your progress</span>
+                </div>
+                <div class="feature-item">
+                  <ion-icon name="heart" class="feature-icon"></ion-icon>
+                  <span>Health monitoring</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right side - Signup form -->
+            <div class="auth-form-container">
+              <div class="auth-form">
+                <div class="form-header">
+                  <h2 class="form-title">Create Account</h2>
+                  <p class="form-subtitle">Get started with your personal AI trainer</p>
+                </div>
+
+                <form class="signup-form" onsubmit="handleSignup(event)">
+                  <div class="input-group">
+                    <label for="fullName" class="input-label">Full Name</label>
+                    <div class="input-wrapper">
+                      <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                      <input type="text" id="fullName" name="fullName" class="form-input" 
+                             placeholder="Enter your full name" required>
+                    </div>
+                  </div>
+
+                  <div class="input-group">
+                    <label for="email" class="input-label">Email</label>
+                    <div class="input-wrapper">
+                      <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+                      <input type="email" id="email" name="email" class="form-input" 
+                             placeholder="Enter your email" required>
+                    </div>
+                  </div>
+
+                  <div class="input-group">
+                    <label for="password" class="input-label">Password</label>
+                    <div class="input-wrapper">
+                      <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                      <input type="password" id="password" name="password" class="form-input" 
+                             placeholder="Create a password" required minlength="6">
+                    </div>
+                  </div>
+
+                  <div class="input-group">
+                    <label for="confirmPassword" class="input-label">Confirm Password</label>
+                    <div class="input-wrapper">
+                      <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                      <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" 
+                             placeholder="Confirm your password" required>
+                    </div>
+                  </div>
+
+                  <div class="form-options">
+                    <label class="checkbox-label">
+                      <input type="checkbox" class="checkbox" required>
+                      <span class="checkmark"></span>
+                      I agree to the <a href="#" class="terms-link">Terms & Conditions</a>
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-full">
+                    Create Account
+                  </button>
+
+                  <div class="form-divider">
+                    <span>or</span>
+                  </div>
+
+                  <div class="auth-links">
+                    <p>Already have an account? 
+                      <a href="login.html" class="auth-link">Sign in here</a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p id="loading-message">Creating your account...</p>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="./assets/js/script.js"></script>
+  <script src="./assets/js/auth.js"></script>
+
+</body>
+
+</html>

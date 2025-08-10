@@ -49,7 +49,7 @@
             <a href="live-session.html" class="navbar-link active" data-nav-link>Live Session</a>
           </li>
           <li>
-            <a href="#" class="navbar-link" data-nav-link>Contact Us</a>
+            <a href="#" class="navbar-link" data-nav-link onclick="logout()">Logout</a>
           </li>
         </ul>
       </nav>
@@ -69,23 +69,25 @@
       
       <!-- Camera View -->
       <div class="camera-container">
-        <div class="camera-placeholder">
+        <video id="camera-feed" autoplay muted playsinline style="display: none;"></video>
+        <canvas id="pose-canvas" style="display: none;"></canvas>
+        
+        <div class="camera-placeholder" id="camera-placeholder">
           <div class="camera-icon">📹</div>
-          <p>Camera Feed</p>
-          <div class="pose-overlay">
-            <div class="skeleton-points">
-              <!-- Simulated pose detection points -->
-              <div class="point head"></div>
-              <div class="point shoulder-left"></div>
-              <div class="point shoulder-right"></div>
-              <div class="point elbow-left"></div>
-              <div class="point elbow-right"></div>
-              <div class="point hip-left"></div>
-              <div class="point hip-right"></div>
-              <div class="point knee-left"></div>
-              <div class="point knee-right"></div>
-            </div>
+          <p>Initializing Camera...</p>
+          <small>Please allow camera access when prompted</small>
+        </div>
+
+        <div class="pose-overlay" id="pose-overlay">
+          <div class="skeleton-points" id="skeleton-points">
+            <!-- Dynamic pose detection points will be added here -->
           </div>
+        </div>
+
+        <!-- Camera Status -->
+        <div class="camera-status" id="camera-status">
+          <div class="status-indicator connecting">🔴</div>
+          <span class="status-text">Connecting to camera...</span>
         </div>
 
         <!-- Session Stats Overlay -->
@@ -110,23 +112,25 @@
 
       <!-- Voice Feedback Panel -->
       <div class="feedback-panel">
-        <h3>Live Feedback</h3>
+        <div class="feedback-header">
+          <h3>Live AI Coach</h3>
+          <div class="voice-controls">
+            <button id="voice-toggle" class="voice-btn active" title="Toggle Voice Feedback">
+              🔊 Voice ON
+            </button>
+          </div>
+        </div>
+        
+        <div class="voice-status" id="voice-status">
+          <span class="status-dot"></span>
+          <span class="status-text">AI Coach Ready</span>
+        </div>
+        
         <div class="feedback-transcript" id="feedback-transcript">
           <div class="feedback-item">
-            <span class="timestamp">0:05</span>
-            <span class="message">Great form on that squat! Keep your chest up.</span>
-          </div>
-          <div class="feedback-item">
-            <span class="timestamp">0:15</span>
-            <span class="message">Nice depth! Remember to drive through your heels.</span>
-          </div>
-          <div class="feedback-item">
-            <span class="timestamp">0:28</span>
-            <span class="message">Perfect timing on the breathing. One more rep!</span>
-          </div>
-          <div class="feedback-item">
-            <span class="timestamp">0:35</span>
-            <span class="message">Excellent control on the way down.</span>
+            <span class="timestamp">0:00</span>
+            <span class="message">Welcome! Get ready to start your workout session.</span>
+            <span class="voice-indicator">🔊</span>
           </div>
         </div>
         
@@ -147,6 +151,17 @@
 
     </div>
   </main>
+
+  <!-- MediaPipe Pose Detection -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+
+  <!-- TensorFlow.js and Pose Detection Models -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.0.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.0.0/dist/pose-detection.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/posenet@2.2.2/dist/posenet.min.js"></script>
 
   <!-- custom js link -->
   <script src="./assets/js/script.js" defer></script>

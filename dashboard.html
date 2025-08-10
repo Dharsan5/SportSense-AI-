@@ -13,6 +13,7 @@
   <!-- custom css link -->
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/dashboard.css">
+  <link rel="stylesheet" href="./assets/css/pages.css">
 
   <!-- google font link -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +50,7 @@
             <a href="live-session.html" class="navbar-link" data-nav-link>Live Session</a>
           </li>
           <li>
-            <a href="#" class="navbar-link" data-nav-link>Contact Us</a>
+            <a href="#" class="navbar-link" data-nav-link onclick="logout()">Logout</a>
           </li>
         </ul>
       </nav>
@@ -69,12 +70,40 @@
   <main>
     <article>
 
+      <!-- HERO SECTION -->
+      <section class="section hero bg-dark has-after has-bg-image" id="dashboard-hero" aria-label="dashboard-hero" 
+        style="background-image: url('./assets/images/hero-bg.png')">
+        <div class="container">
+          <div class="hero-content">
+            <p class="hero-subtitle">
+              <strong class="strong">Your AI</strong>Dashboard
+            </p>
+            <h1 class="h1 hero-title">Track Your Progress, Perfect Your Form</h1>
+            <p class="section-text">
+              Monitor your fitness journey with real-time insights and AI-powered analytics tailored just for you.
+            </p>
+           
+          </div>
+          <div class="hero-banner">
+            <img src="./assets/images/hero-banner.png" width="660" height="753" alt="dashboard banner" class="w-100">
+            <img src="./assets/images/hero-circle-one.png" width="666" height="666" aria-hidden="true" alt=""
+              class="circle circle-1">
+            <img src="./assets/images/hero-circle-two.png" width="666" height="666" aria-hidden="true" alt=""
+              class="circle circle-2">
+            <img src="./assets/images/heart-rate.svg" width="255" height="270" alt="heart rate"
+              class="abs-img abs-img-1">
+            <img src="./assets/images/calories.svg" width="348" height="224" alt="calories" class="abs-img abs-img-2">
+          </div>
+        </div>
+      </section>
+
       <!-- DASHBOARD SECTION -->
       <section class="section dashboard" aria-label="dashboard">
         <div class="container">
 
-          <div class="dashboard-header">
-            <h1 class="h1 section-title">Good morning, Alex!</h1>
+          <div class="dashboard-welcome">
+            <p class="section-subtitle">Your Progress</p>
+            <h2 class="h2 section-title">Good morning, Alex!</h2>
             <p class="dashboard-date" id="current-date"></p>
           </div>
 
@@ -145,22 +174,37 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
+    <div class="section footer-top bg-dark has-bg-image" style="background-image: url('./assets/images/footer-bg.png')">
+      <div class="container">
         <div class="footer-brand">
-          <a href="#" class="logo">
+          <a href="index.html" class="logo">
             <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
             <span class="span">SportSense AI</span>
           </a>
           <p class="footer-brand-text">
-            AI-powered fitness coaching for perfect form and maximum results.
+            Transform your fitness journey with AI-powered training. Smart workouts, perfect form, better results.
           </p>
+          <div class="wrapper">
+            <img src="./assets/images/footer-clock.png" width="34" height="34" loading="lazy" alt="Clock">
+            <ul class="footer-brand-list">
+              <li>
+                <p class="footer-brand-title">Monday - Friday</p>
+                <p>24/7 AI Available</p>
+              </li>
+              <li>
+                <p class="footer-brand-title">Weekend Sessions</p>
+                <p>Anytime Training</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="footer-bottom">
+    <div class="footer-bottom">
+      <div class="container">
         <p class="copyright">
-          &copy; 2025 SportSense AI. All Rights Reserved By Dharsan5
+          &copy; 2025 SportSense AI. All Rights Reserved By <a href="#" class="copyright-link">dharshan.</a>
         </p>
       </div>
     </div>
