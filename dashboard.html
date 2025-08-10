@@ -50,12 +50,17 @@
             <a href="live-session.html" class="navbar-link" data-nav-link>Live Session</a>
           </li>
           <li>
+            <a href="profile.html" class="navbar-link" data-nav-link>Profile</a>
+          </li>
+          <li>
             <a href="#" class="navbar-link" data-nav-link onclick="logout()">Logout</a>
           </li>
         </ul>
       </nav>
 
-      <a href="live-session.html" class="btn btn-secondary">Start Session</a>
+      <a href="live-session.html" class="btn btn-secondary">
+        <span data-user-name>User</span> • Start Session
+      </a>
 
       <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
         <span class="line"></span>
@@ -76,7 +81,7 @@
         <div class="container">
           <div class="hero-content">
             <p class="hero-subtitle">
-              <strong class="strong">Your AI</strong>Dashboard
+              <strong class="strong">Welcome User</strong> to your Dashboard
             </p>
             <h1 class="h1 hero-title">Track Your Progress, Perfect Your Form</h1>
             <p class="section-text">
@@ -103,7 +108,7 @@
 
           <div class="dashboard-welcome">
             <p class="section-subtitle">Your Progress</p>
-            <h2 class="h2 section-title">Good morning, Alex!</h2>
+            <h2 class="h2 section-title" data-user-greeting>Good morning, User!</h2>
             <p class="dashboard-date" id="current-date"></p>
           </div>
 

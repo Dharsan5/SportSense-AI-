@@ -1396,3 +1396,436 @@ body {
   .footer-top .container { grid-template-columns: 1fr 0.6fr 0.9fr 1fr; }
 
 }
+
+/*-----------------------------------*\
+  #PROFILE OVERVIEW
+\*-----------------------------------*/
+
+.profile-overview {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
+}
+
+.profile-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 154, 1, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--coquelicot), #ff8a50);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-color: var(--coquelicot);
+}
+
+.profile-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Clickable Card Styles */
+.clickable-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  border-color: var(--coquelicot);
+}
+
+.clickable-card::after {
+  content: '👆 Click to edit';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: var(--coquelicot);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.clickable-card:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* User Info Card */
+.user-info-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(255, 154, 1, 0.1);
+}
+
+.user-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--coquelicot), #ff8a50);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(255, 154, 1, 0.3);
+}
+
+.user-avatar::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid rgba(255, 154, 1, 0.3);
+  border-radius: 50%;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+.avatar-text {
+  color: white;
+  font-size: 2rem;
+  font-weight: 800;
+  font-family: var(--ff-catamaran);
+}
+
+.user-details h3 {
+  color: var(--rich-black-fogra-29-1);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.user-email {
+  color: rgba(26, 28, 35, 0.6);
+  font-size: 0.9rem;
+}
+
+.user-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 154, 1, 0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  background: rgba(255, 154, 1, 0.1);
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(26, 28, 35, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.25rem;
+  color: var(--rich-black-fogra-29-1);
+  font-weight: 700;
+  font-family: var(--ff-catamaran);
+}
+
+/* Goals Card */
+.goals-card .card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 154, 1, 0.1);
+}
+
+.card-icon {
+  font-size: 2rem;
+  color: var(--coquelicot);
+}
+
+.card-title {
+  color: var(--rich-black-fogra-29-1);
+  font-weight: 700;
+  margin: 0;
+}
+
+.goals-content {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.goal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 154, 1, 0.05);
+  border-radius: 10px;
+  border-left: 3px solid var(--coquelicot);
+  transition: all 0.3s ease;
+}
+
+.goal-item:hover {
+  background: rgba(255, 154, 1, 0.1);
+  transform: translateX(5px);
+}
+
+.goal-label {
+  font-weight: 600;
+  color: rgba(26, 28, 35, 0.7);
+  font-size: 0.9rem;
+}
+
+.goal-value {
+  font-weight: 700;
+  color: var(--rich-black-fogra-29-1);
+  font-family: var(--ff-catamaran);
+}
+
+/* Activity Card */
+.activity-card .activity-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.activity-stat {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(255, 154, 1, 0.05);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.activity-stat:hover {
+  background: rgba(255, 154, 1, 0.1);
+  transform: scale(1.05);
+}
+
+.activity-number {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--coquelicot);
+  font-family: var(--ff-catamaran);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.activity-label {
+  display: block;
+  font-size: 0.9rem;
+  color: rgba(26, 28, 35, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255, 154, 1, 0.2);
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--coquelicot), #ff8a50);
+  border-radius: 50px;
+  transition: width 0.3s ease;
+  width: 65%;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(26, 28, 35, 0.7);
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Actions Card */
+.actions-card .quick-actions-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 154, 1, 0.05);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--rich-black-fogra-29-1);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 154, 1, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.action-btn:hover::before {
+  left: 100%;
+}
+
+.action-btn:hover {
+  background: rgba(255, 154, 1, 0.1);
+  border-color: var(--coquelicot);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 154, 1, 0.2);
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, var(--coquelicot), #ff8a50);
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 154, 1, 0.3);
+}
+
+.action-btn.primary:hover {
+  background: linear-gradient(135deg, #e68a00, #ff7a40);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 154, 1, 0.4);
+}
+
+.action-btn ion-icon {
+  font-size: 1.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-overview-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .profile-card {
+    padding: 1.5rem;
+  }
+  
+  .user-stats {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .activity-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .activity-number {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .profile-overview-grid {
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 2.5rem;
+  }
+  
+  .user-info-card {
+    grid-row: span 1;
+  }
+  
+  .activity-card {
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profile-overview-grid {
+    grid-template-columns: 1.5fr 1fr 2fr;
+    gap: 3rem;
+  }
+  
+  .activity-card {
+    padding: 2.5rem;
+  }
+  
+  .activity-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .activity-stat {
+    padding: 2rem 1.5rem;
+  }
+  
+  .activity-number {
+    font-size: 3rem;
+  }
+}

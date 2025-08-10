@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tags
+  -->
+  <title>Profile - SportSense AI</title>
+  <meta name="title" content="Profile - SportSense AI">
+  <meta name="description" content="Customize your fitness profile and preferences for personalized AI coaching.">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/pages.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@600;700;800;900&family=Rubik:wght@400;500;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="index.html" class="logo">
+        <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+        <span class="span">SportSense AI</span>
+      </a>
+
+      <nav class="navbar" data-navbar>
+        <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-sharp" aria-hidden="true"></ion-icon>
+        </button>
+
+        <ul class="navbar-list">
+          <li>
+            <a href="index.html" class="navbar-link" data-nav-link>Home</a>
+          </li>
+          <li>
+            <a href="dashboard.html" class="navbar-link" data-nav-link>Dashboard</a>
+          </li>
+          <li>
+            <a href="live-session.html" class="navbar-link" data-nav-link>Live Session</a>
+          </li>
+          <li>
+            <a href="profile.html" class="navbar-link active" data-nav-link>Profile</a>
+          </li>
+          <li>
+            <a href="#" class="navbar-link" data-nav-link onclick="logout()">Logout</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="dashboard.html" class="btn btn-secondary">
+        <span data-user-name>User</span> • Dashboard
+      </a>
+
+      <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- 
+    - #MAIN
+  -->
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero bg-dark has-after has-bg-image" id="profile-hero" aria-label="profile-hero"
+        style="background-image: url('./assets/images/hero-bg.png')">
+        <div class="container">
+
+          <div class="hero-content">
+
+            <p class="hero-subtitle">
+              <strong class="strong" data-user-greeting>Welcome User</strong> to your Profile
+            </p>
+
+            <h1 class="h1 hero-title">Customize Your Fitness Journey</h1>
+
+            <p class="section-text">
+              Update your personal information, fitness goals, and preferences to get the most personalized AI coaching experience.
+            </p>
+
+          </div>
+
+          <div class="hero-banner">
+
+            <img src="./assets/images/hero-banner.png" width="660" height="753" alt="profile banner" class="w-100">
+
+            <img src="./assets/images/hero-circle-one.png" width="666" height="666" aria-hidden="true" alt=""
+              class="circle circle-1">
+
+            <img src="./assets/images/hero-circle-two.png" width="666" height="666" aria-hidden="true" alt=""
+              class="circle circle-2">
+
+            <img src="./assets/images/heart-rate.svg" width="255" height="270" alt="heart rate"
+              class="abs-img abs-img-1">
+
+            <img src="./assets/images/calories.svg" width="348" height="224" alt="calories" class="abs-img abs-img-2">
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #PROFILE SUMMARY
+      -->
+
+      <section class="section profile-summary" aria-label="profile-summary">
+        <div class="container">
+
+          <p class="section-subtitle">Quick Overview</p>
+
+          <h2 class="h2 section-title underline">
+            <span class="span">Your Stats at a Glance</span>
+          </h2>
+
+          <div class="summary-grid">
+
+            <!-- Personal Stats Card -->
+            <div class="summary-card personal-summary">
+              <div class="card-header">
+                <div class="user-avatar-small">
+                  <span class="avatar-text-small" data-summary-initials>U</span>
+                </div>
+                <div class="summary-info">
+                  <h3 class="h3 summary-name" data-summary-name>User</h3>
+                  <p class="summary-stats">
+                    <span data-summary-age>--</span> years • 
+                    <span data-summary-height>--</span>cm • 
+                    <span data-summary-weight>--</span>kg
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Goals Summary Card -->
+            <div class="summary-card goals-summary">
+              <div class="summary-header">
+                <ion-icon name="trophy" class="summary-icon"></ion-icon>
+                <h3 class="h3">Goals</h3>
+              </div>
+              <div class="summary-content">
+                <p><strong data-summary-goal>General Fitness</strong></p>
+                <p><span data-summary-level>Beginner</span> • <span data-summary-frequency>3-4x/week</span></p>
+              </div>
+            </div>
+
+            <!-- Activity Summary Card -->
+            <div class="summary-card activity-summary">
+              <div class="summary-header">
+                <ion-icon name="analytics" class="summary-icon"></ion-icon>
+                <h3 class="h3">Activity</h3>
+              </div>
+              <div class="summary-content">
+                <div class="summary-stats-grid">
+                  <div class="summary-stat">
+                    <span class="summary-number" data-summary-sessions>0</span>
+                    <span class="summary-label">Sessions</span>
+                  </div>
+                  <div class="summary-stat">
+                    <span class="summary-number" data-summary-time>0</span>
+                    <span class="summary-label">Minutes</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #PROFILE SECTION
+      -->
+
+      <section class="section profile" aria-label="profile">
+        <div class="container">
+
+          <p class="section-subtitle">Your Information</p>
+
+          <h2 class="h2 section-title underline">
+            <span class="span">Profile Settings</span>
+          </h2>
+
+          <div class="profile-container">
+
+            <!-- Personal Information Card -->
+            <div class="profile-card">
+              <div class="card-header">
+                <ion-icon name="person-circle" class="card-icon"></ion-icon>
+                <h3 class="h3 card-title">Personal Information</h3>
+              </div>
+
+              <form class="profile-form" id="personal-info-form">
+                <div class="input-group">
+                  <label for="fullName" class="input-label">Full Name</label>
+                  <input type="text" id="fullName" name="fullName" class="form-input" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="input-group">
+                  <label for="email" class="input-label">Email Address</label>
+                  <input type="email" id="email" name="email" class="form-input" placeholder="Enter your email" readonly>
+                </div>
+
+                <div class="input-group">
+                  <label for="age" class="input-label">Age</label>
+                  <input type="number" id="age" name="age" class="form-input" placeholder="Enter your age" min="13" max="100">
+                </div>
+
+                <div class="input-row">
+                  <div class="input-group">
+                    <label for="height" class="input-label">Height (cm)</label>
+                    <input type="number" id="height" name="height" class="form-input" placeholder="170" min="100" max="250">
+                  </div>
+                  <div class="input-group">
+                    <label for="weight" class="input-label">Weight (kg)</label>
+                    <input type="number" id="weight" name="weight" class="form-input" placeholder="70" min="30" max="300">
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Fitness Goals Card -->
+            <div class="profile-card">
+              <div class="card-header">
+                <ion-icon name="trophy" class="card-icon"></ion-icon>
+                <h3 class="h3 card-title">Fitness Goals</h3>
+              </div>
+
+              <form class="profile-form" id="fitness-goals-form">
+                <div class="input-group">
+                  <label for="fitnessLevel" class="input-label">Current Fitness Level</label>
+                  <select id="fitnessLevel" name="fitnessLevel" class="form-select">
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="expert">Expert</option>
+                  </select>
+                </div>
+
+                <div class="input-group">
+                  <label for="goal" class="input-label">Primary Goal</label>
+                  <select id="goal" name="goal" class="form-select">
+                    <option value="weight-loss">Weight Loss</option>
+                    <option value="muscle-gain">Muscle Gain</option>
+                    <option value="endurance">Build Endurance</option>
+                    <option value="strength">Build Strength</option>
+                    <option value="general-fitness">General Fitness</option>
+                    <option value="flexibility">Improve Flexibility</option>
+                  </select>
+                </div>
+
+                <div class="input-group">
+                  <label for="workoutFrequency" class="input-label">Workout Frequency (per week)</label>
+                  <select id="workoutFrequency" name="workoutFrequency" class="form-select">
+                    <option value="1-2">1-2 times</option>
+                    <option value="3-4">3-4 times</option>
+                    <option value="5-6">5-6 times</option>
+                    <option value="daily">Daily</option>
+                  </select>
+                </div>
+
+                <div class="input-group">
+                  <label for="workoutDuration" class="input-label">Preferred Workout Duration (minutes)</label>
+                  <select id="workoutDuration" name="workoutDuration" class="form-select">
+                    <option value="15">15 minutes</option>
+                    <option value="30">30 minutes</option>
+                    <option value="45">45 minutes</option>
+                    <option value="60">60 minutes</option>
+                    <option value="90">90+ minutes</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+
+            <!-- Preferences Card -->
+            <div class="profile-card">
+              <div class="card-header">
+                <ion-icon name="settings" class="card-icon"></ion-icon>
+                <h3 class="h3 card-title">Preferences</h3>
+              </div>
+
+              <form class="profile-form" id="preferences-form">
+                <div class="input-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="voiceEnabled" name="voiceEnabled" class="checkbox">
+                    <span class="checkmark"></span>
+                    Enable Voice Coaching
+                  </label>
+                </div>
+
+                <div class="input-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="emailNotifications" name="emailNotifications" class="checkbox">
+                    <span class="checkmark"></span>
+                    Email Notifications
+                  </label>
+                </div>
+
+                <div class="input-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" id="progressReminders" name="progressReminders" class="checkbox">
+                    <span class="checkmark"></span>
+                    Progress Reminders
+                  </label>
+                </div>
+
+                <div class="input-group">
+                  <label for="difficultyLevel" class="input-label">AI Coaching Intensity</label>
+                  <select id="difficultyLevel" name="difficultyLevel" class="form-select">
+                    <option value="gentle">Gentle</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="intense">Intense</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="profile-actions">
+            <button type="button" class="btn btn-secondary" onclick="resetProfile()">Reset Changes</button>
+            <button type="button" class="btn btn-primary" onclick="saveProfile()">Save Profile</button>
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="section footer-top bg-dark has-bg-image" style="background-image: url('./assets/images/footer-bg.png')">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="index.html" class="logo">
+            <ion-icon name="barbell-sharp" aria-hidden="true"></ion-icon>
+            <span class="span">SportSense AI</span>
+          </a>
+
+          <p class="footer-brand-text">
+            Transform your fitness journey with AI-powered training. Smart workouts, perfect form, better results.
+          </p>
+
+          <div class="wrapper">
+
+            <img src="./assets/images/footer-clock.png" width="34" height="34" loading="lazy" alt="Clock">
+
+            <ul class="footer-brand-list">
+
+              <li>
+                <p class="footer-brand-title">Monday - Friday</p>
+                <p>24/7 AI Available</p>
+              </li>
+
+              <li>
+                <p class="footer-brand-title">Weekend Sessions</p>
+                <p>Anytime Training</p>
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title has-before">Quick Links</p>
+          </li>
+
+          <li>
+            <a href="index.html" class="footer-link">Home</a>
+          </li>
+
+          <li>
+            <a href="dashboard.html" class="footer-link">Dashboard</a>
+          </li>
+
+          <li>
+            <a href="live-session.html" class="footer-link">Live Session</a>
+          </li>
+
+          <li>
+            <a href="profile.html" class="footer-link">Profile</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title has-before">Contact Info</p>
+          </li>
+
+          <li class="footer-list-item">
+            <ion-icon name="location" aria-hidden="true"></ion-icon>
+            <address class="address footer-link">
+              AI Innovation Center, Tech District
+            </address>
+          </li>
+
+          <li class="footer-list-item">
+            <ion-icon name="call" aria-hidden="true"></ion-icon>
+            <a href="tel:+7894631546876" class="footer-link">+789-463-154-6876</a>
+          </li>
+
+          <li class="footer-list-item">
+            <ion-icon name="mail" aria-hidden="true"></ion-icon>
+            <a href="mailto:info@sportsenseai.com" class="footer-link">info@sportsenseai.com</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2025 SportSense AI. All Rights Reserved By <a href="#" class="copyright-link">dharshan.</a>
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" aria-label="back to top" data-back-top-btn class="back-top-btn">
+    <ion-icon name="caret-up-sharp" aria-hidden="true"></ion-icon>
+  </a>
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p id="loading-message">Saving your profile...</p>
+    </div>
+  </div>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+  <script src="./assets/js/supabase-config.js" defer></script>
+  <script src="./assets/js/profile.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

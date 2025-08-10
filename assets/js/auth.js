@@ -1,40 +1,71 @@
 'use strict';
 
 /**
- * SportSense AI Authentication System
- * Simple login and signup functionality
+ * SportSense AI Authentication System with Supabase Integration
+ * Handles login, signup, and user management
  */
 
 // Global variables
 let isLoading = false;
+let useSupabase = false;
 
 // Initialize auth system
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('🔐 SportSense AI Auth System Initialized');
+  console.log('SportSense AI Auth System Initializing...');
   
-  // Check if user is already logged in
-  checkExistingAuth();
-  
-  // Initialize form validation
-  initializeValidation();
+  // Check if Supabase is available and configured
+  setTimeout(() => {
+    if (window.supabaseAuth && window.supabaseAuth.isConfigured()) {
+      useSupabase = true;
+      console.log('Using Supabase for authentication');
+    } else {
+      useSupabase = false;
+      console.log('Using localStorage for authentication');
+    }
+    
+    // Check if user is already logged in
+    checkExistingAuth();
+    
+    // Initialize form validation
+    initializeValidation();
+  }, 1000); // Wait for Supabase to initialize
 });
 
 // Check for existing authentication
-const checkExistingAuth = function() {
-  const savedUser = localStorage.getItem('sportsense_user');
-  if (savedUser && (window.location.pathname.includes('login') || window.location.pathname.includes('signup'))) {
+const checkExistingAuth = async function() {
+  if (useSupabase) {
     try {
-      const user = JSON.parse(savedUser);
-      console.log('✅ User already logged in:', user.name);
+      const supabase = window.supabaseAuth.supabase();
+      const { data: { session } } = await supabase.auth.getSession();
       
-      showLoading('Welcome back, ' + user.name + '!');
-      
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 1500);
+      if (session && (window.location.pathname.includes('login') || window.location.pathname.includes('signup'))) {
+        console.log('User already logged in via Supabase:', session.user.email);
+        showLoading('Welcome back, ' + (session.user.user_metadata?.full_name || session.user.email) + '!');
+        
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      }
     } catch (error) {
-      console.error('❌ Error parsing saved user data');
-      localStorage.removeItem('sportsense_user');
+      console.error('Error checking Supabase session:', error);
+    }
+  } else {
+    // Use localStorage fallback
+    const savedUser = localStorage.getItem('sportsense_user');
+    if (savedUser && (window.location.pathname.includes('login') || window.location.pathname.includes('signup'))) {
+      try {
+        const user = JSON.parse(savedUser);
+        console.log('User already logged in via localStorage:', user.name);
+        
+        showLoading('Welcome back, ' + user.name + '!');
+        
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1500);
+      } catch (error) {
+        console.error('Error parsing saved user data');
+        localStorage.removeItem('sportsense_user');
+      }
     }
   }
 };
@@ -59,32 +90,54 @@ const handleLogin = async function(event) {
     return;
   }
   
-  console.log('🔐 Login attempt for:', email);
+  console.log('Login attempt for:', email);
   
   // Show loading
   showLoading('Signing you in...');
   
   try {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Check credentials
-    const users = JSON.parse(localStorage.getItem('sportsense_users') || '[]');
-    const user = users.find(u => u.email === email && u.password === password);
-    
-    if (user) {
-      // Login successful
-      localStorage.setItem('sportsense_user', JSON.stringify(user));
+    if (useSupabase) {
+      // Supabase authentication
+      const supabase = window.supabaseAuth.supabase();
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
       
-      updateLoadingMessage('Login successful! Welcome back!');
+      if (error) {
+        hideLoading();
+        showError(error.message || 'Login failed. Please check your credentials.');
+        console.error('Supabase login error:', error);
+        return;
+      }
       
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 1000);
+      if (data.user) {
+        console.log('Supabase login successful');
+        updateLoadingMessage('Login successful! Welcome back!');
+        
+        // User profile will be handled by auth state listener
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1000);
+      }
     } else {
-      // Login failed
-      hideLoading();
-      showError('Invalid email or password. Please try again.');
+      // localStorage fallback
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const users = JSON.parse(localStorage.getItem('sportsense_users') || '[]');
+      const user = users.find(u => u.email === email && u.password === password);
+      
+      if (user) {
+        localStorage.setItem('sportsense_user', JSON.stringify(user));
+        updateLoadingMessage('Login successful! Welcome back!');
+        
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1000);
+      } else {
+        hideLoading();
+        showError('Invalid email or password. Please try again.');
+      }
     }
     
   } catch (error) {
@@ -126,51 +179,96 @@ const handleSignup = async function(event) {
     return;
   }
   
-  console.log('📝 Signup attempt for:', fullName, email);
+  console.log('Signup attempt for:', fullName, email);
   
   // Show loading
   showLoading('Creating your account...');
   
   try {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Check if email already exists
-    const users = JSON.parse(localStorage.getItem('sportsense_users') || '[]');
-    const emailExists = users.find(u => u.email === email);
-    
-    if (emailExists) {
-      hideLoading();
-      showError('An account with this email already exists. Please login instead.');
-      return;
-    }
-    
-    // Create new user
-    const newUser = {
-      id: Date.now().toString(),
-      name: fullName,
-      email: email,
-      password: password, // In real app, this would be hashed
-      createdAt: new Date().toISOString(),
-      profile: {
+    if (useSupabase) {
+      // Supabase authentication
+      const supabase = window.supabaseAuth.supabase();
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          data: {
+            full_name: fullName,
+            display_name: fullName.split(' ')[0]
+          }
+        }
+      });
+      
+      if (error) {
+        hideLoading();
+        if (error.message.includes('already registered')) {
+          showError('An account with this email already exists. Please login instead.');
+        } else {
+          showError(error.message || 'Signup failed. Please try again.');
+        }
+        console.error('Supabase signup error:', error);
+        return;
+      }
+      
+      if (data.user) {
+        console.log('Supabase signup successful');
+        
+        if (data.user.email_confirmed_at) {
+          // Email already confirmed, proceed to home
+          updateLoadingMessage('Account created successfully! Welcome to SportSense AI!');
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1000);
+        } else {
+          // Email confirmation required
+          updateLoadingMessage('Account created! Please check your email to confirm your account.');
+          setTimeout(() => {
+            showSuccess('Please check your email and click the confirmation link to activate your account.');
+            hideLoading();
+          }, 2000);
+        }
+      }
+    } else {
+      // localStorage fallback
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const users = JSON.parse(localStorage.getItem('sportsense_users') || '[]');
+      const emailExists = users.find(u => u.email === email);
+      
+      if (emailExists) {
+        hideLoading();
+        showError('An account with this email already exists. Please login instead.');
+        return;
+      }
+      
+      const newUser = {
+        id: Date.now().toString(),
+        name: fullName,
+        email: email,
+        password: password,
+        created_at: new Date().toISOString(),
+        fitness_level: 'beginner',
         goal: 'general-fitness',
-        fitnessLevel: 'beginner',
         age: null,
         height: null,
-        weight: null
-      }
-    };
-    
-    // Save user
-    users.push(newUser);
-    localStorage.setItem('sportsense_users', JSON.stringify(users));
-    localStorage.setItem('sportsense_user', JSON.stringify(newUser));
-    
-    updateLoadingMessage('Account created successfully! Welcome to SportSense AI!');
-    
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 1000);
+        weight: null,
+        preferences: {
+          voice_enabled: true,
+          difficulty_level: 'beginner',
+          workout_duration: 30
+        }
+      };
+      
+      users.push(newUser);
+      localStorage.setItem('sportsense_users', JSON.stringify(users));
+      localStorage.setItem('sportsense_user', JSON.stringify(newUser));
+      
+      updateLoadingMessage('Account created successfully! Welcome to SportSense AI!');
+      
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+    }
     
   } catch (error) {
     hideLoading();
@@ -311,4 +409,4 @@ document.head.appendChild(style);
 window.handleLogin = handleLogin;
 window.handleSignup = handleSignup;
 
-console.log('✅ SportSense AI Auth System Ready');
+console.log('SportSense AI Auth System Ready');

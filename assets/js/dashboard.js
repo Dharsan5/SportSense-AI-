@@ -16,20 +16,20 @@ const checkAuthenticationStatus = function() {
   
   if (!savedUser) {
     // Show authentication prompt instead of immediate redirect
-    console.log('🔓 User not authenticated, showing auth prompt...');
+    console.log('User not authenticated, showing auth prompt...');
     showAuthenticationPrompt();
     return false;
   }
   
   try {
     const user = JSON.parse(savedUser);
-    console.log('✅ User authenticated:', user.name);
+    console.log('User authenticated:', user.name);
     
     // Update UI with user information
     updateUserInfo(user);
     return true;
   } catch (error) {
-    console.error('❌ Error parsing user data, showing auth prompt');
+    console.error('Error parsing user data, showing auth prompt');
     localStorage.removeItem('sportsense_user');
     showAuthenticationPrompt();
     return false;
@@ -170,17 +170,49 @@ const showAuthenticationPrompt = function() {
 
 // Update dashboard with user information
 const updateUserInfo = function(user) {
-  // Update welcome message if element exists
+  const firstName = user.name ? user.name.split(' ')[0] : 'User';
+  const dynamicGreeting = getDynamicGreeting();
+  
+  // Update welcome message with dynamic greeting
   const welcomeElement = document.querySelector('.hero-title');
   if (welcomeElement) {
-    welcomeElement.textContent = `Welcome back, ${user.name.split(' ')[0]}!`;
+    welcomeElement.textContent = `${dynamicGreeting}, ${firstName}!`;
+  }
+  
+  // Update hero subtitle with user name
+  const heroSubtitle = document.querySelector('.hero-subtitle .strong');
+  if (heroSubtitle) {
+    heroSubtitle.textContent = `Welcome ${firstName}`;
   }
   
   // Update any other user-specific elements
   const userNameElements = document.querySelectorAll('[data-user-name]');
   userNameElements.forEach(element => {
-    element.textContent = user.name;
+    element.textContent = firstName || 'User';
   });
+  
+  // Update user greeting in stats section if exists
+  const greetingElements = document.querySelectorAll('[data-user-greeting]');
+  greetingElements.forEach(element => {
+    element.textContent = `${dynamicGreeting}, ${firstName}`;
+  });
+  
+  console.log(`Dashboard updated for user: ${firstName} with greeting: ${dynamicGreeting}`);
+};
+
+// Get dynamic greeting based on time of day
+const getDynamicGreeting = function() {
+  const hour = new Date().getHours();
+  
+  if (hour >= 5 && hour < 12) {
+    return 'Good Morning';
+  } else if (hour >= 12 && hour < 17) {
+    return 'Good Afternoon';
+  } else if (hour >= 17 && hour < 22) {
+    return 'Good Evening';
+  } else {
+    return 'Good Night';
+  }
 };
 
 // Initialize dashboard functionality
@@ -188,20 +220,58 @@ const initializeDashboard = function() {
   setCurrentDate();
   animateReadinessScore();
   initializeCharts();
+  
+  // Update greeting and time every minute to keep them current
+  setInterval(() => {
+    const savedUser = localStorage.getItem('sportsense_user');
+    if (savedUser) {
+      try {
+        const user = JSON.parse(savedUser);
+        updateDynamicGreeting(user);
+      } catch (error) {
+        console.error('Error updating dynamic greeting:', error);
+      }
+    }
+    // Also update the current date/time
+    setCurrentDate();
+  }, 60000); // Update every minute
 };
 
-// Set current date
+// Update just the dynamic greeting (called by timer)
+const updateDynamicGreeting = function(user) {
+  const firstName = user.name ? user.name.split(' ')[0] : 'User';
+  const dynamicGreeting = getDynamicGreeting();
+  
+  // Update greeting elements
+  const greetingElements = document.querySelectorAll('[data-user-greeting]');
+  greetingElements.forEach(element => {
+    element.textContent = `${dynamicGreeting}, ${firstName}!`;
+  });
+  
+  console.log(`Greeting updated: ${dynamicGreeting}, ${firstName}`);
+};
+
+// Set current date and time
 const setCurrentDate = function () {
   const dateElement = document.getElementById('current-date');
   if (dateElement) {
     const now = new Date();
-    const options = { 
+    const dateOptions = { 
       weekday: 'long', 
       year: 'numeric', 
       month: 'long', 
       day: 'numeric' 
     };
-    dateElement.textContent = now.toLocaleDateString('en-US', options);
+    const timeOptions = {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    };
+    
+    const dateStr = now.toLocaleDateString('en-US', dateOptions);
+    const timeStr = now.toLocaleTimeString('en-US', timeOptions);
+    
+    dateElement.innerHTML = `${dateStr} • <span style="color: #ff9a01; font-weight: 600;">${timeStr}</span>`;
   }
 };
 
@@ -322,7 +392,7 @@ const logout = function() {
   const confirmation = confirm('Are you sure you want to logout?');
   
   if (confirmation) {
-    console.log('🔓 User logging out...');
+    console.log('User logging out...');
     
     // Clear user data
     localStorage.removeItem('sportsense_user');
@@ -335,4 +405,4 @@ const logout = function() {
 // Export logout function for global access
 window.logout = logout;
 
-console.log('✅ Dashboard with Authentication Ready');
+console.log('Dashboard with Authentication Ready');

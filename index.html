@@ -69,6 +69,10 @@
           </li>
 
           <li>
+            <a href="#profile" class="navbar-link" data-nav-link>Profile</a>
+          </li>
+
+          <li>
             <a href="#about" class="navbar-link" data-nav-link>About Us</a>
           </li>
 
@@ -148,9 +152,104 @@
         </div>
       </section>
 
+      <!-- 
+        - #PROFILE OVERVIEW
+      -->
 
+      <section class="section profile-overview" id="profile" aria-label="profile-overview">
+        <div class="container">
 
+          <p class="section-subtitle">Your Profile</p>
 
+          <h2 class="h2 section-title underline">
+            <span class="span">Fitness Overview</span>
+          </h2>
+
+          <div class="profile-overview-grid">
+
+            <!-- User Info Card -->
+            <div class="profile-card user-info-card clickable-card" onclick="openProfilePage('personal')">
+              <div class="card-header">
+                <div class="user-avatar">
+                  <span class="avatar-text" data-user-initials>U</span>
+                </div>
+                <div class="user-details">
+                  <h3 class="h3 user-name" data-user-name>User</h3>
+                  <p class="user-email" data-user-email>user@example.com</p>
+                </div>
+              </div>
+              <div class="user-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Age</span>
+                  <span class="stat-value" data-user-age>--</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Height</span>
+                  <span class="stat-value" data-user-height>-- cm</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Weight</span>
+                  <span class="stat-value" data-user-weight>-- kg</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fitness Goals Card -->
+            <div class="profile-card goals-card clickable-card" onclick="openProfilePage('goals')">
+              <div class="card-header">
+                <ion-icon name="trophy" class="card-icon"></ion-icon>
+                <h3 class="h3 card-title">Fitness Goals</h3>
+              </div>
+              <div class="goals-content">
+                <div class="goal-item">
+                  <span class="goal-label">Level</span>
+                  <span class="goal-value" data-fitness-level>Beginner</span>
+                </div>
+                <div class="goal-item">
+                  <span class="goal-label">Primary Goal</span>
+                  <span class="goal-value" data-fitness-goal>General Fitness</span>
+                </div>
+                <div class="goal-item">
+                  <span class="goal-label">Frequency</span>
+                  <span class="goal-value" data-workout-frequency>3-4 times/week</span>
+                </div>
+                <div class="goal-item">
+                  <span class="goal-label">Duration</span>
+                  <span class="goal-value" data-workout-duration>30 minutes</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity Summary Card -->
+            <div class="profile-card activity-card clickable-card" onclick="openProfilePage('activity')">
+              <div class="card-header">
+                <ion-icon name="analytics" class="card-icon"></ion-icon>
+                <h3 class="h3 card-title">Recent Activity</h3>
+              </div>
+              <div class="activity-content">
+                <div class="activity-stat">
+                  <span class="activity-number" data-total-sessions>0</span>
+                  <span class="activity-label">Sessions Completed</span>
+                </div>
+                <div class="activity-stat">
+                  <span class="activity-number" data-total-time>0</span>
+                  <span class="activity-label">Minutes Trained</span>
+                </div>
+                <div class="activity-stat">
+                  <span class="activity-number" data-streak>0</span>
+                  <span class="activity-label">Day Streak</span>
+                </div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" data-progress-width="0%"></div>
+              </div>
+              <p class="progress-text">Weekly Goal Progress</p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
 
       <!-- 
         - #ABOUT
@@ -745,6 +844,7 @@
     - custom js link
   -->
   <script src="./assets/js/script.js" defer></script>
+  <script src="./assets/js/supabase-config.js" defer></script>
   <script src="./assets/js/home-auth.js" defer></script>
 
   <!-- 
