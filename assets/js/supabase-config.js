@@ -57,21 +57,37 @@ const initializeSupabase = async function() {
 // Create Supabase client
 const createSupabaseClient = function() {
   try {
-    if (SUPABASE_CONFIG.url && SUPABASE_CONFIG.anonKey) {
-      supabase = window.supabase.createClient(
-        SUPABASE_CONFIG.url,
-        SUPABASE_CONFIG.anonKey
-      );
-      console.log('Supabase client initialized');
+    console.log('🔧 Creating Supabase client...');
+    console.log('📍 URL:', SUPABASE_CONFIG.url);
+    console.log('🔑 Key available:', !!SUPABASE_CONFIG.anonKey);
+    
+    if (!isSupabaseConfigured()) {
+      console.warn('⚠️ Supabase credentials not configured, falling back to localStorage');
+      fallbackToLocalStorage();
+      return;
+    }
+
+    // Use the correct createClient function from the global scope
+    if (typeof createClient !== 'undefined') {
+      supabase = createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+      console.log('✅ Supabase client initialized successfully');
+      window.supabaseAvailable = true;
+      
+      // Set up auth state listener
+      setupAuthStateListener();
+    } else if (typeof window.supabase !== 'undefined' && typeof window.supabase.createClient === 'function') {
+      supabase = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+      console.log('✅ Supabase client initialized successfully (via window.supabase)');
+      window.supabaseAvailable = true;
       
       // Set up auth state listener
       setupAuthStateListener();
     } else {
-      console.warn('Supabase credentials not configured, falling back to localStorage');
-      fallbackToLocalStorage();
+      throw new Error('createClient function not available');
     }
   } catch (error) {
-    console.error('Error creating Supabase client:', error);
+    console.error('❌ Error creating Supabase client:', error);
+    console.log('🔄 Falling back to localStorage');
     fallbackToLocalStorage();
   }
 };
