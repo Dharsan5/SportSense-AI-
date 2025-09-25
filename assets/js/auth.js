@@ -17,10 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => {
     if (window.supabaseAuth && window.supabaseAuth.isConfigured()) {
       useSupabase = true;
-      console.log('Using Supabase for authentication');
+      console.log('✅ Using Supabase for authentication');
     } else {
       useSupabase = false;
-      console.log('Using localStorage for authentication');
+      console.log('⚠️ Supabase not configured - Using localStorage for authentication');
+      console.log('📝 To setup Supabase: Check SUPABASE_SETUP.md for instructions');
+      
+      // Show configuration notice on signup/login pages
+      showConfigurationNotice();
     }
     
     // Check if user is already logged in
@@ -186,8 +190,17 @@ const handleSignup = async function(event) {
   
   try {
     if (useSupabase) {
+      // Check if Supabase is properly configured
+      if (!window.supabaseAuth.isConfigured()) {
+        throw new Error('Supabase is not properly configured. Please check your environment variables or contact support.');
+      }
+      
       // Supabase authentication
       const supabase = window.supabaseAuth.supabase();
+      
+      if (!supabase) {
+        throw new Error('Supabase client is not initialized. Please refresh the page and try again.');
+      }
       const { data, error } = await supabase.auth.signUp({
         email: email,
         password: password,
@@ -393,6 +406,39 @@ const showMessage = function(message, type = 'error') {
   }
   
   console.log(`${type.toUpperCase()}:`, message);
+};
+
+// Show configuration notice when Supabase is not configured
+const showConfigurationNotice = function() {
+  // Only show on auth pages
+  const isAuthPage = window.location.pathname.includes('signup') || 
+                     window.location.pathname.includes('login') || 
+                     document.querySelector('.login-form, .signup-form');
+  
+  if (isAuthPage) {
+    const notice = document.createElement('div');
+    notice.style.cssText = `
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.4;
+    `;
+    notice.innerHTML = `
+      <strong>⚠️ Development Mode:</strong> 
+      Using local storage for authentication. 
+      <br><small>Setup Supabase in SUPABASE_SETUP.md for production features.</small>
+    `;
+    
+    const form = document.querySelector('.login-form, .signup-form');
+    if (form && form.parentNode) {
+      form.parentNode.insertBefore(notice, form);
+    }
+  }
 };
 
 // Add CSS for field validation

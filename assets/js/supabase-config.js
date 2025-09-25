@@ -7,10 +7,20 @@
 
 // Supabase configuration - FRONTEND ONLY
 const SUPABASE_CONFIG = {
-  url: window.getEnvVar ? window.getEnvVar('VITE_SUPABASE_URL', 'https://fbjmqrxlwgqojqardgqo.supabase.co') : 
-       'https://fbjmqrxlwgqojqardgqo.supabase.co', // Your Supabase project URL
-  anonKey: window.getEnvVar ? window.getEnvVar('VITE_SUPABASE_ANON_KEY', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiam1xcnhsd2dxb2pxYXJkZ3FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MTUyNjQsImV4cCI6MjA3MDM5MTI2NH0.uE0MtSSN5v1KmER0xSY-nRNPrj1u5RfFYW3pfIdzzBI') :
-           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZiam1xcnhsd2dxb2pxYXJkZ3FvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ4MTUyNjQsImV4cCI6MjA3MDM5MTI2NH0.uE0MtSSN5v1KmER0xSY-nRNPrj1u5RfFYW3pfIdzzBI' // Your Supabase anon key (safe for frontend)
+  url: window.getEnvVar ? window.getEnvVar('VITE_SUPABASE_URL', 'https://qltlpyaymdnoxrntoxmz.supabase.co') : 
+       'https://qltlpyaymdnoxrntoxmz.supabase.co',
+  anonKey: window.getEnvVar ? window.getEnvVar('VITE_SUPABASE_ANON_KEY', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsdGxweWF5bWRub3hybnRveG16Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTE2OTksImV4cCI6MjA3NDM2NzY5OX0.Ruwt-QPtAYQTcRpiQgxKY2xwMjjK-S1NqZ7XMbT-SAM') :
+           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsdGxweWF5bWRub3hybnRveG16Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3OTE2OTksImV4cCI6MjA3NDM2NzY5OX0.Ruwt-QPtAYQTcRpiQgxKY2xwMjjK-S1NqZ7XMbT-SAM'
+};
+
+// Check if Supabase is properly configured
+const isSupabaseConfigured = () => {
+  return SUPABASE_CONFIG.url && 
+         SUPABASE_CONFIG.anonKey && 
+         !SUPABASE_CONFIG.url.includes('your-project') &&
+         !SUPABASE_CONFIG.url.includes('placeholder') &&
+         SUPABASE_CONFIG.url.includes('supabase.co') &&
+         SUPABASE_CONFIG.anonKey.startsWith('eyJ');
 };
 
 // Initialize Supabase client
@@ -305,14 +315,6 @@ const getUserProfile = async function(userId) {
 const fallbackToLocalStorage = function() {
   console.log('Using localStorage fallback for authentication');
   window.supabaseAvailable = false;
-};
-
-// Check if Supabase is configured (frontend credentials only)
-const isSupabaseConfigured = function() {
-  return SUPABASE_CONFIG.url && 
-         SUPABASE_CONFIG.anonKey && 
-         SUPABASE_CONFIG.url !== 'YOUR_SUPABASE_URL' && 
-         SUPABASE_CONFIG.anonKey !== 'YOUR_SUPABASE_ANON_KEY';
 };
 
 // Export functions for use in other files

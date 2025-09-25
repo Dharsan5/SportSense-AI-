@@ -18,11 +18,14 @@ window.ENV = {
 // Helper function to get environment variable with fallback
 window.getEnvVar = function(key, fallback = null) {
   // Check if running in development with actual env values
-  if (window.ENV[key] && !window.ENV[key].startsWith('%')) {
-    return window.ENV[key];
+  const envValue = window.ENV && window.ENV[key];
+  
+  // If environment value exists and is not a placeholder, use it
+  if (envValue && !envValue.startsWith('%') && !envValue.endsWith('%')) {
+    return envValue;
   }
   
-  // Fallback value for local development
+  // Otherwise use fallback for local development
   return fallback;
 };
 
